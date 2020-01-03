@@ -163,6 +163,8 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/showeditpreview</li>
+
 <li>$:/state/tab--1498284803</li>
 
 <li>$:/state/tab-1749438307</li>
@@ -9422,6 +9424,9 @@ Error message and password prompt
 <div created="20200103193755267" modified="20200103193807049" title="$:/SiteTitle">
 <pre>Notebook</pre>
 </div>
+<div created="20200103194400251" modified="20200103194400251" title="$:/state/showeditpreview">
+<pre>yes</pre>
+</div>
 <div created="20200103194304178" modified="20200103194308942" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/Filter</pre>
 </div>
@@ -9604,8 +9609,9 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200103194326617" modified="20200103194347838" tags="" title="QMK development">
-<pre>sudo systemctl stop ModemManager.service
+<div created="20200103194326617" modified="20200103194443406" tags="" title="QMK development">
+<pre>```shell
+sudo systemctl stop ModemManager.service
 
 git clone https://github.com/qmk/qmk_firmware.git
 cd qmk_firmware
@@ -9623,7 +9629,7 @@ sudo docker run \
   
 make converter/usb_usb:default
 make converter/usb_usb:default:flash
-</pre>
+```</pre>
 </div>
 
 </div>

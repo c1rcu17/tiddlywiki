@@ -163,9 +163,13 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/tab--1498284803</li>
+
 <li>$:/state/tab-1749438307</li>
 
 <li>$:/state/tab-2065006209</li>
+
+<li>$:/state/tab/sidebar--595412856</li>
 
 <li>$:/StoryList</li>
 
@@ -174,6 +178,8 @@ Error message and password prompt
 <li>$:/themes/tiddlywiki/snowwhite</li>
 
 <li>$:/themes/tiddlywiki/vanilla</li>
+
+<li>QMK development</li>
 
 </ul>
 </p>
@@ -9416,13 +9422,19 @@ Error message and password prompt
 <div created="20200103193755267" modified="20200103193807049" title="$:/SiteTitle">
 <pre>Notebook</pre>
 </div>
+<div created="20200103194304178" modified="20200103194308942" title="$:/state/tab--1498284803">
+<pre>$:/core/ui/AdvancedSearch/Filter</pre>
+</div>
 <div created="20200103193631679" modified="20200103193654434" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Saving</pre>
 </div>
 <div created="20200103193700323" modified="20200103193700323" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/GitHub</pre>
 </div>
-<div created="20200103193628961" list="$:/AdvancedSearch $:/ControlPanel GettingStarted" modified="20200103194108047" title="$:/StoryList">
+<div created="20200103194312587" modified="20200103194313102" title="$:/state/tab/sidebar--595412856">
+<pre>$:/core/ui/SideBar/Tools</pre>
+</div>
+<div created="20200103194207174" list="[[QMK development]] $:/AdvancedSearch" modified="20200103194234630" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9591,6 +9603,27 @@ Error message and password prompt
         }
     }
 }</pre>
+</div>
+<div created="20200103194326617" modified="20200103194347838" tags="" title="QMK development">
+<pre>sudo systemctl stop ModemManager.service
+
+git clone https://github.com/qmk/qmk_firmware.git
+cd qmk_firmware
+git submodule init
+git submodule update
+
+sudo docker run \
+  --rm -it --privileged \
+  --name qmk --hostname qmk \
+  --user $(id -u):$(id -g) --group-add dialout \
+  -v /dev:/dev \
+  -v $(pwd):/qmk_firmware \
+  -w /qmk_firmware \
+  qmkfm/base_container bash
+  
+make converter/usb_usb:default
+make converter/usb_usb:default:flash
+</pre>
 </div>
 
 </div>

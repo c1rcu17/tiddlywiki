@@ -169,6 +169,8 @@ Error message and password prompt
 
 <li>$:/state/showeditpreview</li>
 
+<li>$:/state/tab--2112689675</li>
+
 <li>$:/state/tab-1749438307</li>
 
 <li>$:/state/tab-2065006209</li>
@@ -186,6 +188,8 @@ Error message and password prompt
 <li>$:/themes/tiddlywiki/vanilla</li>
 
 <li>Home</li>
+
+<li>QMK development</li>
 
 </ul>
 </p>
@@ -9436,8 +9440,11 @@ Error message and password prompt
 <div created="20200103195518257" modified="20200103195715437" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20200103193631679" modified="20200103195933742" title="$:/state/tab-1749438307">
-<pre>$:/core/ui/ControlPanel/Info</pre>
+<div created="20200103200002761" modified="20200103200002761" title="$:/state/tab--2112689675">
+<pre>$:/core/ui/ControlPanel/Advanced</pre>
+</div>
+<div created="20200103193631679" modified="20200103200020170" title="$:/state/tab-1749438307">
+<pre>$:/core/ui/ControlPanel/KeyboardShortcuts</pre>
 </div>
 <div created="20200103193700323" modified="20200103193700323" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/GitHub</pre>
@@ -9445,7 +9452,7 @@ Error message and password prompt
 <div created="20200103195453449" modified="20200103195930260" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
-<div created="20200103193628961" list="$:/ControlPanel" modified="20200103195932399" title="$:/StoryList">
+<div created="20200103193628961" list="[[QMK development]]" modified="20200103195932399" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9627,6 +9634,28 @@ Paste it [[here|$:/ControlPanel]]
 
 &lt;&lt;list-links &quot;[tag[task]sort[title]]&quot;&gt;&gt;
 </pre>
+</div>
+<div created="20200103200022785" modified="20200103200128895" tags="" title="QMK development">
+<pre>```shell
+sudo systemctl stop ModemManager.service
+
+git clone https://github.com/qmk/qmk_firmware.git
+cd qmk_firmware
+git submodule init
+git submodule update
+
+sudo docker run \
+  --rm -it --privileged \
+  --name qmk --hostname qmk \
+  --user $(id -u):$(id -g) --group-add dialout \
+  -v /dev:/dev \
+  -v $(pwd):/qmk_firmware \
+  -w /qmk_firmware \
+  qmkfm/base_container bash
+  
+make converter/usb_usb:default
+make converter/usb_usb:default:flash
+```</pre>
 </div>
 
 </div>
